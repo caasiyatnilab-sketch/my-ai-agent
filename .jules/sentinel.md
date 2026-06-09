@@ -1,0 +1,4 @@
+## 2026-06-09 - Resource Exhaustion Protection in Tools
+**Vulnerability:** The `Calculator` tool was vulnerable to CPU and memory exhaustion via large exponents (e.g., `10**10**10`), and `WorkspaceReader` could cause OOM by reading very large files into memory using `read_text()`.
+**Learning:** Simple exponent limits on `ast.Pow` (e.g., `right > 1000`) can be bypassed by nested power expressions (e.g., `(a**b)**c`) if the intermediate results are not also validated for magnitude. `1e308` is a practical limit for floats in Python before they become `inf`.
+**Prevention:** Implement both operator-specific limits (like exponent size) and global result magnitude checks (e.g., `abs(result) > 1e308`) in mathematical evaluators. For file I/O, use bounded reads (`f.read(max_chars)`) instead of reading the entire content into memory.
