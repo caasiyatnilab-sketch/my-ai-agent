@@ -1,0 +1,3 @@
+## 2025-05-15 - Safe Reverse-File Reading with UTF-8
+**Learning:** When reading a UTF-8 file backwards in chunks, decoding the raw byte buffer directly can cause `UnicodeDecodeError` if a multi-byte character is split across chunk boundaries. Additionally, repeatedly prepending chunks to a string buffer and re-decoding/re-splitting leads to O(N²) complexity.
+**Action:** Always split chunks by the newline byte (`\n` or `0x0A`) *before* decoding to UTF-8. The newline byte is a single-byte delimiter in UTF-8 and never appears as part of a multi-byte character, making it a safe splitting point. Collect individual byte-lines and decode them only once.
