@@ -1,0 +1,3 @@
+## 2025-05-14 - Optimized JSONL Memory Loading
+**Learning:** Loading conversation history by reading and splitting the entire JSONL file is O(n) in both time and memory. For long-running agents, this becomes a significant bottleneck. Reverse file reading using binary chunks allows fetching the last N messages in O(1) time relative to file size (assuming roughly constant message length).
+**Action:** Use chunked reverse-file reading for any append-only log or history files when only the most recent entries are required. Ensure safe UTF-8 handling by splitting on the `\n` byte (`0x0A`), which is unambiguous in UTF-8.
