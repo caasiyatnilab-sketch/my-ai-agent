@@ -1,0 +1,4 @@
+## 2025-05-15 - Resource Exhaustion in Safe Evaluators
+**Vulnerability:** The `Calculator` tool, while using `ast.parse` to avoid `eval()`, was vulnerable to Denial of Service (DoS) via CPU and memory exhaustion. Specifically, expressions like `2**1000000` or nested exponents like `2**2**100` could hang or crash the process.
+**Learning:** Whitelisting safe AST nodes is not enough for "safe" evaluation. Mathematical operations, particularly exponentiation, can produce results that exceed system resources even with small input strings.
+**Prevention:** Always implement proactive resource limits (e.g., maximum exponent value and maximum result magnitude) within the evaluation logic of mathematical tools. Validate intermediate results in recursive evaluators to prevent bypasses via nested expressions.
