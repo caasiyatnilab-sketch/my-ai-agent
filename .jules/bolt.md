@@ -1,0 +1,3 @@
+## 2025-05-15 - Efficient Reverse-Reading of UTF-8 JSONL Files
+**Learning:** Reading a large JSONL file from the beginning to fetch the last N lines has O(N) complexity where N is the total number of lines. Using a chunked reverse-read strategy with `file.seek` and `file.tell` reduces this to O(limit), where limit is the number of lines requested. When working with binary chunks of UTF-8 files, splitting by `\n` (0x0A) is safe because 0x0A is a single-byte delimiter that doesn't appear as part of multi-byte sequences.
+**Action:** Use the chunked reverse-read pattern for any append-only log or memory storage that requires fetching recent history to maintain performance as the file grows.
