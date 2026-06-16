@@ -1,0 +1,3 @@
+## 2025-06-16 - CLI "Thinking..." indicator for long-running operations
+**Learning:** Providing immediate visual feedback for network-bound CLI commands (like LLM requests) prevents the user from wondering if the application has hung. Using `\r` (carriage return) followed by spaces and another `\r` is an effective way to provide this feedback without polluting the terminal's scrollback history.
+**Action:** Always wrap the "Thinking..." indicator in a `try...finally` block to ensure the indicator is cleared even if the operation fails or is interrupted, and check `sys.stdout.isatty()` to avoid injecting escape sequences into non-interactive streams.
