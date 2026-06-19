@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving CLI Responsiveness and Readability
+**Learning:** Users perceive long-running CLI operations (like LLM calls) as 'hung' without immediate visual feedback. A transient 'Thinking...' indicator improves perceived responsiveness. Also, dense output without proper spacing makes tool results hard to distinguish from the final answer.
+**Action:** Use `sys.stdout.write('\rThinking...')` followed by a flush and a subsequent clearing sequence (e.g., `\r` + spaces + `\r`) to provide non-intrusive visual feedback during long-running CLI operations. Add blank lines between distinct output sections (like tool results and assistant answers) to improve scannability.
