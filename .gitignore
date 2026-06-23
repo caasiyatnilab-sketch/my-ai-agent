@@ -1,0 +1,18 @@
+# Python Virtual Environments & Cache
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node modules (in case of UI element)
+node_modules/
+
+# Secrets
+.env
+.env.*
+.env.local
+
+# OS Files
+.DS_Store
