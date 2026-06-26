@@ -16,3 +16,18 @@ node_modules/
 
 # OS Files
 .DS_Store
+
+# Test & Lint Cache
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Agent runtime data
+.agent-memory.jsonl
