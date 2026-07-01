@@ -1,18 +1,21 @@
-# Python Virtual Environments & Cache
-venv/
-.venv/
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 
-# Node modules (in case of UI element)
-node_modules/
+# Build artifacts
+build/
+dist/
+*.egg-info/
 
-# Secrets
+# Local environment
 .env
-.env.*
-.env.local
+.venv/
+venv/
 
-# OS Files
-.DS_Store
+# Agent runtime data
+.agent-memory.jsonl
